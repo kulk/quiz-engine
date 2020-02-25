@@ -1,0 +1,30 @@
+Java Quiz;What is an assignment statement;Assigning a value to a variable;Adding a number to an int;Assigning a multiplication;Assigning a name to a variable
+Java Quiz;Java keywords are written in lowercase as well as uppercase;False;True;;
+Java Quiz;Which of the following is not a Java keyword?;Integer;static;try;new
+Java Quiz;An object could be ...;anything;an algorithm;a data container;a program
+Java Quiz;What is the correct syntax for java main method?;none of the above;public void main(Strirign args);public static void main(String[] args);public static void main
+Java Quiz;A UML Association is…;implemented as a Java attribute member;implemented as a Java method;implemented as a Java Class;
+Java Quiz;Object-Oriented Programming means ...;Designing the application based on the objects discovered when anal singthe problem;Being objective about what you develop;Writing an algorithm before writing your program and having a test plan;Writing a program composed ofJava classes
+Java Quiz;If you want your condition to depend upon two conditions BOTH being true, What is the proper notation to put between the two Boolean statements?;&&;!;||;
+Java Quiz;Choose the appropriate data type for this field: isSwimmer;boolean;double;string;int
+Java Quiz;Choose the appropriate data type for this value: 5.5;double;int;boolean;String
+World History Quiz;What scandal forced U.S. President Richard Nixon to resign in 1974?;Watergate;Iran Contra;Lewinsky Scandal;Whitewater
+World History Quiz;The Cuban Revolution led to the rise of what dictator?;Fidel Castro;Che Guevara;Rafael Trujillo;Augusto Pinochet
+World History Quiz;Along with Hiroshima, Japan, which Japanese city was hit by an atomic bomb in 1945?;Nagasaki;Tokyo;Osaka;Nagoya
+World History Quiz;Who was the first female prime minister of Britain?;Margaret Thatcher;Florence Nightingale;Queen Elizabeth II;Jane Austen
+World History Quiz;Who assassinated Abraham Lincoln?;John Wilkes Booth;Lee Harvey Oswald;James Earl Ray;Leon Czolgosz
+World History Quiz;Adolf Hitler was the leader of which party?;Nazi Party;Communist Party;Republican Fascist Party;none of the above.
+World History Quiz;Which continent was devastated by the Black Death in the 1300s?;Europe;North America;South America;Africa
+World History Quiz;What charter was passed by King John of England in 1215?;Magna Carta;Mayflower Compact;Stamp Act;Quartering Act
+World History Quiz;What acquisition of territory by the United States from France happened in 1803?;Louisiana Purchase;Alaskan Purchase;the annexation of Texas;none of the above
+World History Quiz;Along with the United States, what other world power was a major player in the War of 1812?;Great Britain;Mexico;Japan;Italy
+Test quiz;Question 1;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 2;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 3;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 4;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 5;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 6;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 7;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 8;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 9;Answer A;Answer B;Answer C;Answer D
+Test quiz;Question 10;Answer A;Answer B;Answer C;Answer D

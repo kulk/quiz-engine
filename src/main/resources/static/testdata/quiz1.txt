@@ -1,0 +1,10 @@
+Java Quiz;What is an assignment statement;Assigning a value to a variable;Adding a number to an int;Assigning a multiplication;Assigning a name to a variable
+Java Quiz;Java keywords are written in lowercase as well as uppercase;False;True;;
+Java Quiz;Which of the following is not a Java keyword?;Integer;static;try;new
+Java Quiz;An object could be ...;anything;an algorithm;a data container;a program
+Java Quiz;What is the correct syntax for java main method?;none of the above;public void main(Strirign args);public static void main(String[] args);public static void main
+Java Quiz;A UML Association is…;implemented as a Java attribute member;implemented as a Java method;implemented as a Java Class;
+Java Quiz;Object-Oriented Programming means ...;Designing the application based on the objects discovered when anal singthe problem;Being objective about what you develop;Writing an algorithm before writing your program and having a test plan;Writing a program composed ofJava classes
+Java Quiz;If you want your condition to depend upon two conditions BOTH being true, What is the proper notation to put between the two Boolean statements?;&&;!;||;
+Java Quiz;Choose the appropriate data type for this field: isSwimmer;boolean;double;string;int
+Java Quiz;Choose the appropriate data type for this value: 5.5;double;int;boolean;String
