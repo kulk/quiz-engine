@@ -1,6 +1,9 @@
 package com.quiz.model;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.List;
 
 @Entity
@@ -12,16 +15,16 @@ public class Question {
 
     private String question;
 
-    @OneToOne
-    private Answer correctAnswer;
+    private String correctAnswer;
 
-    @OneToMany
-    private List<Answer> incorrectAnswers;
+    /*@Size(min = 4, max = 4)*/
+    @ElementCollection
+    private List<String> incorrectAnswers;
 
     public Question() {
     }
 
-    public Question(String question, Answer correctAnswer, List<Answer> incorrectAnswers) {
+    public Question(String question, String correctAnswer, List<String> incorrectAnswers) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
@@ -39,19 +42,23 @@ public class Question {
         this.question = question;
     }
 
-    public Answer getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(Answer correctAnswer) {
+    public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
-    public List<Answer> getIncorrectAnswers() {
+    public List<String> getIncorrectAnswers() {
         return incorrectAnswers;
     }
 
-    public void setIncorrectAnswers(List<Answer> incorrectAnswers) {
+    public void addIncorrectAnswers(String answer){
+        incorrectAnswers.add(answer);
+    }
+
+    public void setIncorrectAnswers(List<String> incorrectAnswers) {
         this.incorrectAnswers = incorrectAnswers;
     }
 }

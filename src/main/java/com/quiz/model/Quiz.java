@@ -53,4 +53,6 @@ public class Quiz {
     public void setHighScore(int highScore) {
         this.highScore = highScore;
     }
+
+
 }
