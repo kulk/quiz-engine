@@ -1,9 +1,10 @@
 package com.quiz.model;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,17 +15,17 @@ public class Question {
     private int questionId;
 
     private String question;
-
-    private String correctAnswer;
+    @OneToOne
+    private Answer correctAnswer;
 
     /*@Size(min = 4, max = 4)*/
-    @ElementCollection
-    private List<String> incorrectAnswers;
+    @OneToMany
+    private List<Answer> incorrectAnswers;
 
     public Question() {
     }
 
-    public Question(String question, String correctAnswer, List<String> incorrectAnswers) {
+    public Question(String question, Answer correctAnswer, List<Answer> incorrectAnswers) {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
@@ -42,23 +43,26 @@ public class Question {
         this.question = question;
     }
 
-    public String getCorrectAnswer() {
+    public Answer getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public void setCorrectAnswer(String correctAnswer) {
+    public void setCorrectAnswer(Answer correctAnswer) {
         this.correctAnswer = correctAnswer;
     }
 
-    public List<String> getIncorrectAnswers() {
+    public List<Answer> getIncorrectAnswers() {
         return incorrectAnswers;
     }
 
-    public void addIncorrectAnswers(String answer){
+    public void addIncorrectAnswers(Answer answer){
+        if(incorrectAnswers == null){
+            incorrectAnswers = new ArrayList<>();
+        }
         incorrectAnswers.add(answer);
     }
 
-    public void setIncorrectAnswers(List<String> incorrectAnswers) {
+    public void setIncorrectAnswers(List<Answer> incorrectAnswers) {
         this.incorrectAnswers = incorrectAnswers;
     }
 }

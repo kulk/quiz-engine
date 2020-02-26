@@ -1,11 +1,12 @@
 package com.quiz.controller;
 
-import com.quiz.DAO.QuestionDao;
+import com.quiz.model.Answer;
 import com.quiz.model.Question;
 import com.quiz.model.Quiz;
+import com.quiz.service.AnswerService;
+import com.quiz.service.QuestionService;
 import com.quiz.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,23 +16,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-@Component
+@Controller
 public class TestData {
 
     @Autowired
     private QuizService quizService;
 
     @Autowired
-    private QuestionDao questionDao;
+    private QuestionService questionService;
 
-    ArrayList<String> cars = new ArrayList<>();
+    @Autowired
+    private AnswerService answerService;
 
-    public void loadTestData(){
+    @GetMapping("test")
+    public void loadTestData() {
         ArrayList<String> quizzes = new ArrayList<>();
         quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz1.txt");
         quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz2.txt");
         quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz3.txt");
-        for(String quiz: quizzes) {
+        for (String quiz : quizzes) {
             try {
                 Scanner input = new Scanner(new File(quiz));
                 quizService.save(createQuiz(input));
@@ -41,7 +44,7 @@ public class TestData {
         }
     }
 
-    private Quiz createQuiz(Scanner input){
+    private Quiz createQuiz(Scanner input) {
         ArrayList<Question> questions = new ArrayList<>();
         Quiz quiz = new Quiz();
         String rowsFromFile = input.nextLine();
@@ -49,28 +52,39 @@ public class TestData {
         quiz.setName(rowArray[0]);
         while (input.hasNextLine()) {
             quiz.addQuestion(createQuestion(rowArray));
-            }
-        return quiz;
         }
+        return quiz;
+    }
 
-    private Question createQuestion(String[] rowArray){
-        List<String> incorrectAnswers = getIncorrectAnswers(rowArray);
+    private Question createQuestion(String[] rowArray) {
+        List<Answer> incorrectAnswers = getIncorrectAnswers(rowArray);
         Question question = new Question();
         question.setQuestion(rowArray[1]);
-        question.setCorrectAnswer(rowArray[2]);
-        for(String answer: incorrectAnswers){
-            question.addIncorrectAnswers(answer);
+        Answer correctAnswer = getCorrectAnswer(rowArray);
+        question.setCorrectAnswer(correctAnswer);
+        for (Answer incorrectAnswer : incorrectAnswers) {
+            question.addIncorrectAnswers(correctAnswer);
         }
-        questionDao.save(question);
+        questionService.save(question);
         return question;
 
     }
-    private List<String> getIncorrectAnswers(String[] rowArray){
-        List<String> answers = new ArrayList<>();
-        for (int i = 2; i < rowArray.length ; i++) {
-            answers.add(rowArray[i]);
+    //Todo: Question is not stored
+    //Todo: Quiz is not stored
+
+    private Answer getCorrectAnswer(String[] rowArray) {
+        Answer correctAnswer = new Answer(rowArray[2]);
+        answerService.save(correctAnswer);
+        return correctAnswer;
+
+    }
+
+    private List<Answer> getIncorrectAnswers(String[] rowArray) {
+        List<Answer> incorrectAnswers = new ArrayList<>();
+        for (int i = 2; i < rowArray.length; i++) {
+            incorrectAnswers.add(new Answer(rowArray[i]));
         }
-        return answers;
+        return incorrectAnswers;
     }
 
 }
