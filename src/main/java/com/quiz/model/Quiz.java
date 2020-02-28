@@ -1,9 +1,7 @@
 package com.quiz.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +12,7 @@ public class Quiz {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Question> questions;
 
     private int highScore;
@@ -35,6 +33,9 @@ public class Quiz {
     }
 
     public void addQuestion(Question question){
+        if(this.questions == null){
+            this.questions = new ArrayList<>();
+        }
         questions.add(question);
     }
 

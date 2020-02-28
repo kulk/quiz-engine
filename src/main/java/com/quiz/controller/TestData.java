@@ -45,13 +45,15 @@ public class TestData {
     }
 
     private Quiz createQuiz(Scanner input) {
-        ArrayList<Question> questions = new ArrayList<>();
+        //ArrayList<Question> questions = new ArrayList<>();
         Quiz quiz = new Quiz();
-        String rowsFromFile = input.nextLine();
-        String[] rowArray = rowsFromFile.split(";");
-        quiz.setName(rowArray[0]);
         while (input.hasNextLine()) {
-            quiz.addQuestion(createQuestion(rowArray));
+            String rowsFromFile = input.nextLine();
+            String[] rowArray = rowsFromFile.split(";");
+            quiz.setName(rowArray[0]);
+            Question question = createQuestion(rowArray);
+            questionService.save(question);
+            quiz.addQuestion(question);
         }
         return quiz;
     }
@@ -63,14 +65,11 @@ public class TestData {
         Answer correctAnswer = getCorrectAnswer(rowArray);
         question.setCorrectAnswer(correctAnswer);
         for (Answer incorrectAnswer : incorrectAnswers) {
-            question.addIncorrectAnswers(correctAnswer);
+            question.addIncorrectAnswers(incorrectAnswer);
         }
         questionService.save(question);
         return question;
-
     }
-    //Todo: Question is not stored
-    //Todo: Quiz is not stored
 
     private Answer getCorrectAnswer(String[] rowArray) {
         Answer correctAnswer = new Answer(rowArray[2]);
@@ -82,7 +81,10 @@ public class TestData {
     private List<Answer> getIncorrectAnswers(String[] rowArray) {
         List<Answer> incorrectAnswers = new ArrayList<>();
         for (int i = 2; i < rowArray.length; i++) {
-            incorrectAnswers.add(new Answer(rowArray[i]));
+            System.out.println(rowArray[i]);
+            Answer incorrectAnswer = new Answer(rowArray[i]);
+            answerService.save(incorrectAnswer);
+            incorrectAnswers.add(incorrectAnswer);
         }
         return incorrectAnswers;
     }
