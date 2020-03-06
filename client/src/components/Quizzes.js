@@ -21,6 +21,8 @@ export default class Quizzes extends Component {
                 {this.state.quizzes.map((item) => (
                     <p>{item.name}</p>
                 ))}
+
+                <p>{this.state.quizzes.map.quizId}</p>
             </div>
         )
     }

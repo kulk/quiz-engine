@@ -10,6 +10,7 @@ public class Quiz {
     @GeneratedValue
     private int quizId;
 
+    @Column(name="name", unique = true)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
