@@ -1,26 +1,31 @@
 import React from 'react';
-import Quizzes from './components/Quizzes';
-import Navbar from './components/Navbar';
+
+import Navibar from './components/Navibar';
 import './App.css';
 import { BrowserRouter as Router, Route, } from "react-router-dom";
 import Home from './contents/Home';
+import Createquiz from './contents/Createquiz';
 import About from './contents/About';
 
 function App() {
 
     return (
         <Router>
-            <div className="App">
-                <Navbar />
-                {/*<Route exact path "/">
-                    <Home/>
-                </Route>*/}
+            <div>
+                <Navibar />
+            </div>
+            <div className="container">
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route path="/create-quiz">
+                    <Createquiz />
+                </Route>
                 <Route path="/about">
                     <About />
                 </Route>
             </div>
-            {/*<h2>QUIZ ENGINE</h2>*/}
-            {/*<Quizzes/>*/}
+
         </Router>
     )
 

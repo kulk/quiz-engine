@@ -1,7 +1,19 @@
 .App {
   text-align: center;
 }
+.jumbotron {
+  background-color: #FFFFFF !important;
+}
+nav li a {
+  color: #5872F2;
+  font-size: 13px;
+  display: block;
+  padding: 0.5rem 1rem;
+}
 
+body{
+  background-color: #F0F1F6 !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -52,4 +64,7 @@ nav ul li {
 .active
 {
   font-weight: bolder;
+  background-color: #E4E7F2;
+  border-radius: 6px;
+
 }
