@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, } from "react-router-dom";
 import Home from './contents/Home';
 import Createquiz from './contents/Createquiz';
 import About from './contents/About';
+import Doquiz from './contents/Doquiz';
 
 function App() {
 
@@ -24,6 +25,9 @@ function App() {
                 <Route path="/about">
                     <About />
                 </Route>
+                <Route path="/do-quiz/:quizId" component={Doquiz} />
+                    {/*<Doquiz />*/}
+                {/*</Route>*/}
             </div>
 
         </Router>
