@@ -12,6 +12,7 @@ public class QuizApplication {
         SpringApplication.run(QuizApplication.class, args);
     }
 
+
     /*@Override
     public void run(String... String)throws Exception{
         System.out.println("Running!");

@@ -31,9 +31,9 @@ public class TestData {
     @GetMapping("test")
     public void loadTestData() {
         ArrayList<String> quizzes = new ArrayList<>();
-        quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz1.txt");
-        quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz2.txt");
-        quizzes.add("../quiz-engine/src/main/resources/static/testdata/quiz3.txt");
+        quizzes.add("../java-quiz/src/main/resources/static/testdata/quiz1.txt");
+        quizzes.add("../java-quiz/src/main/resources/static/testdata/quiz2.txt");
+        quizzes.add("../java-quiz/src/main/resources/static/testdata/quiz3.txt");
         for (String quiz : quizzes) {
             try {
                 Scanner input = new Scanner(new File(quiz));
@@ -51,6 +51,8 @@ public class TestData {
             String rowsFromFile = input.nextLine();
             String[] rowArray = rowsFromFile.split(";");
             quiz.setName(rowArray[0]);
+            quiz.setDifficulty("medium");
+            quiz.setType("multiple");
             Question question = createQuestion(rowArray);
             questionService.save(question);
             quiz.addQuestion(question);
