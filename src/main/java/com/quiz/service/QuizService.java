@@ -25,4 +25,8 @@ public class QuizService {
     public List<Quiz> findAll(){
         return quizDao.findAll();
     }
+
+    public Quiz findQuizById(int quizId){
+        return quizDao.findQuizByQuizId(quizId);
+    }
 }

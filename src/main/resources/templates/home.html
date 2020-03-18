@@ -5,20 +5,17 @@
 <body>
 <head th:replace="fragments/navbar :: navbar"/>
 
-
-<h1>Load test data</h1>
-
 <div class="container">
-    <div class="jumbotron"></div>
-    <table>
-        <tr th:each="quiz : ${quizzes}">
-            <td>
-                <span th:text="${quiz.quizId}"/>
-                <span th:text="${quiz.name}"/>
-            </td>
-        </tr>
-    </table>
+    <div th:each="quiz : ${quizzes}" class="jumbotron">
+
+        <h2><a th:href="@{/doquiz(id=${quiz.quizId})}"><span th:text="${quiz.name}"/></a></h2>
+        <p><b>Difficulty:</b> <span th:text="${quiz.difficulty}"/></p>
+        <p><b>Quiz type:</b> <span th:text="${quiz.type}"/></p>
+
+    </div>
 </div>
+
+
 <head th:replace="fragments/script :: script"/>
 </body>
 </html>
