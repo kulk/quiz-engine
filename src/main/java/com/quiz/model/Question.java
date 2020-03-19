@@ -18,7 +18,6 @@ public class Question {
     @OneToOne
     private Answer correctAnswer;
 
-    /*@Size(min = 4, max = 4)*/
     @OneToMany
     private List<Answer> incorrectAnswers;
 

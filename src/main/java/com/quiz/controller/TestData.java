@@ -82,7 +82,7 @@ public class TestData {
 
     private List<Answer> getIncorrectAnswers(String[] rowArray) {
         List<Answer> incorrectAnswers = new ArrayList<>();
-        for (int i = 2; i < rowArray.length; i++) {
+        for (int i = 3; i < rowArray.length; i++) {
             System.out.println(rowArray[i]);
             Answer incorrectAnswer = new Answer(rowArray[i]);
             answerService.save(incorrectAnswer);
