@@ -6,8 +6,9 @@
 <div th:replace="fragments/navbar :: navbar"/>
 
 <!-- Start template -->
-<h1>DO QUIZ</h1>
+
 <div class="container">
+    <h1>DO QUIZ</h1>
     <div class="jumbotron">
         <span th:text="${quiz.name}"/>
     </div>
@@ -17,23 +18,6 @@
 <!-- End template -->
 
 <head th:replace="fragments/script :: script"/>
-<script>
-    /*window.onload = function() {
-
-    };*/
-    $( document ).ready(function() {
-        console.log("JQuery is working!");
-        getQuiz();
-    });
-
-    function getQuiz(){
-        var url = new URL(window.location.href);
-        var quizId = url.searchParams.get("id");
-        var data = "quizid=" + quizId;
-        $.post('http://localhost:8080/getquiz', data, function(data, status){
-            console.log(data)
-        })
-    }
-</script>
+<script src="js/do-quiz.js"></script>
 </body>
 </html>

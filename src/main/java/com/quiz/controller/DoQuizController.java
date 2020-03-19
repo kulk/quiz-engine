@@ -21,7 +21,6 @@ public class DoQuizController {
         return "do-quiz";
     }
 
-    // Todo: Should this be a GetMapping?
     @CrossOrigin
     @PostMapping("/getquiz")
     public @ResponseBody Quiz getQuizHandler(@RequestParam(name = "quizid") int quizId){
