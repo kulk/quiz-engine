@@ -1,3 +1,4 @@
+var iterator = 0;
 $(document).ready(function () {
     getQuiz();
 });
@@ -8,12 +9,37 @@ function getQuiz() {
     var quizId = url.searchParams.get("id");
     var data = "quizid=" + quizId;
     $.post('http://localhost:8080/getquiz', data, function (data, status) {
-        parseResponse(data)
+        displayData(data)
     })
 }
 
-function parseResponse(data){
-    //var quiz = JSON.parse(data);
-    console.log(data.name);
-    console.log(data.questions);
+function displayData(data){
+    document.getElementById("name").innerHTML = data.name;
+    console.log(data);
+    console.log("##########################");
+    questionIterator(data, iterator);
+}
+
+function questionIterator(data, iterator){
+    document.getElementById("question").innerHTML = data.questions[iterator].question;
+    createAnswerList(data.questions[iterator].correctAnswer.answer, data.questions[iterator].incorrectAnswers);
+}
+
+function createAnswerList(correctAnswer, incorrectAnswers){
+    // Create Array with correct answers
+
+    // Shuffle correct answer array
+
+    // Insert incorrectAnswer at random position
+
+    // Create list with booleans
+
+
+    console.log("Answers: " + correctAnswer, incorrectAnswers)
+
+}
+
+function displayAnswers(answerMap){
+    // Create map of answers
+
 }

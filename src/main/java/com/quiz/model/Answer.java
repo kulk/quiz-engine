@@ -26,4 +26,9 @@ public class Answer {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
+    public int getAnswerId() {
+        return answerId;
+    }
+
 }
