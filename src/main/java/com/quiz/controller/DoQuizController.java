@@ -1,7 +1,5 @@
 package com.quiz.controller;
 
-import com.google.gson.Gson;
-import com.quiz.DAO.QuizDao;
 import com.quiz.model.Quiz;
 import com.quiz.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +21,11 @@ public class DoQuizController {
 
     @CrossOrigin
     @PostMapping("/getquiz")
-    public @ResponseBody Quiz getQuizHandler(@RequestParam(name = "quizid") int quizId){
-        Quiz quiz = quizService.findQuizById(quizId);
-        return quiz;
+    public @ResponseBody
+    Quiz getQuizHandler(@RequestParam(name = "quizid") int quizId) {
+        return quizService.createClientQuiz(quizId);
 
     }
+
+
 }

@@ -13,33 +13,28 @@ function getQuiz() {
     })
 }
 
-function displayData(data){
+function displayData(data) {
     document.getElementById("name").innerHTML = data.name;
     console.log(data);
     console.log("##########################");
     questionIterator(data, iterator);
 }
 
-function questionIterator(data, iterator){
+function questionIterator(data, iterator) {
     document.getElementById("question").innerHTML = data.questions[iterator].question;
-    createAnswerList(data.questions[iterator].correctAnswer.answer, data.questions[iterator].incorrectAnswers);
+    displayAnswers(data.questions[iterator].incorrectAnswers);
 }
 
-function createAnswerList(correctAnswer, incorrectAnswers){
-    // Create Array with correct answers
+function displayAnswers(answerList) {
 
-    // Shuffle correct answer array
+    for (let i = 0; i < answerList.length ; i++) {
+        var answer = document.createElement("p");
+        var node = document.createTextNode(answerList[i].answer);
+        answer.appendChild(node);
+        document.getElementById("answer").appendChild(answer);
+    }
 
-    // Insert incorrectAnswer at random position
-
-    // Create list with booleans
 
 
-    console.log("Answers: " + correctAnswer, incorrectAnswers)
-
-}
-
-function displayAnswers(answerMap){
-    // Create map of answers
 
 }
