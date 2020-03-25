@@ -20,21 +20,26 @@ function displayData(data) {
     questionIterator(data, iterator);
 }
 
-function questionIterator(data, iterator) {
+function questionIterator(data) {
+    document.getElementById("question-nr").innerHTML = ("Question " + (iterator + 1) + ":");
     document.getElementById("question").innerHTML = data.questions[iterator].question;
-    displayAnswers(data.questions[iterator].incorrectAnswers);
+    displayAnswers(data.questions[iterator].incorrectAnswers, data);
 }
 
-function displayAnswers(answerList) {
-
-    for (let i = 0; i < answerList.length ; i++) {
+function displayAnswers(answerList, data) {
+    for (let i = 0; i < answerList.length; i++) {
         var answer = document.createElement("p");
+        answer.className = answerList[i].answerId;
         var node = document.createTextNode(answerList[i].answer);
         answer.appendChild(node);
         document.getElementById("answer").appendChild(answer);
+
+        answer.addEventListener("click", function () {
+            console.log("Gebruiker heeft geklikt " + answerList[i].answerId);
+            iterator++;
+            document.getElementById("answer").innerHTML = "";
+            questionIterator(data)
+        });
     }
-
-
-
-
 }
+
