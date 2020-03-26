@@ -1,4 +1,6 @@
 var iterator = 0;
+var chosenAnswers = new Map();
+
 $(document).ready(function () {
     getQuiz();
 });
@@ -21,9 +23,13 @@ function displayData(data) {
 }
 
 function questionIterator(data) {
-    document.getElementById("question-nr").innerHTML = ("Question " + (iterator + 1) + ":");
-    document.getElementById("question").innerHTML = data.questions[iterator].question;
-    displayAnswers(data.questions[iterator].incorrectAnswers, data);
+    if(iterator < data.questions.length){
+        document.getElementById("question-nr").innerHTML = ("Question " + (iterator + 1) + ":");
+        document.getElementById("question").innerHTML = data.questions[iterator].question;
+        displayAnswers(data.questions[iterator].incorrectAnswers, data);
+    } else {
+        checkAnswers();
+    }
 }
 
 function displayAnswers(answerList, data) {
@@ -33,13 +39,21 @@ function displayAnswers(answerList, data) {
         var node = document.createTextNode(answerList[i].answer);
         answer.appendChild(node);
         document.getElementById("answer").appendChild(answer);
-
-        answer.addEventListener("click", function () {
-            console.log("Gebruiker heeft geklikt " + answerList[i].answerId);
-            iterator++;
-            document.getElementById("answer").innerHTML = "";
-            questionIterator(data)
+        answer.addEventListener("click", function(){
+            addClickEvent(data, answerList[i].answerId);
         });
     }
 }
 
+function addClickEvent(data, answerId) {
+    console.log("questionId = " + data.questions[iterator].questionId, "answerId = " + answerId);
+    chosenAnswers.set(data.questions[iterator].questionId, answerId)
+    iterator++;
+    document.getElementById("answer").innerHTML = "";
+    questionIterator(data)
+}
+
+function checkAnswers(){
+    //Todo: Make an AJAX call to get the correct answers
+    window.alert("All questions have been answered");
+}
