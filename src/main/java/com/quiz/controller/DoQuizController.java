@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class DoQuizController {
@@ -26,6 +27,18 @@ public class DoQuizController {
         return quizService.createClientQuiz(quizId);
 
     }
+
+    @CrossOrigin
+    @PostMapping("/result")
+    //public @ResponseBody Quiz getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers) {
+    public RedirectView getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers,
+                                 @RequestParam(name = "quizid") String quizId) {
+        System.out.println(chosenAnswers);
+        System.out.println("quizid = " + quizId);
+        //return "redirect:/generate-quiz";
+        return new RedirectView("/");
+    }
+
 
 
 }

@@ -28,7 +28,7 @@ function questionIterator(data) {
         document.getElementById("question").innerHTML = data.questions[iterator].question;
         displayAnswers(data.questions[iterator].incorrectAnswers, data);
     } else {
-        checkAnswers();
+        submitAnswers(data);
     }
 }
 
@@ -53,7 +53,18 @@ function addClickEvent(data, answerId) {
     questionIterator(data)
 }
 
-function checkAnswers(){
-    //Todo: Make an AJAX call to get the correct answers
-    window.alert("All questions have been answered");
+function submitAnswers(data){
+    //Todo: Submit answers to the backend
+    var answers = mapToJson(chosenAnswers);
+    var localData = "chosenanswers=" + answers + "&quizid=" + data.quizId;
+    $.post('http://localhost:8080/result', localData, function (localData, status) {
+        console.log(status);
+        if(status === "success"){
+            
+        }
+    });
+}
+
+function mapToJson(map) {
+    return JSON.stringify([...map]);
 }
