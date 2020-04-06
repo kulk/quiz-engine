@@ -28,17 +28,5 @@ public class DoQuizController {
 
     }
 
-    @CrossOrigin
-    @PostMapping("/result")
-    //public @ResponseBody Quiz getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers) {
-    public RedirectView getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers,
-                                 @RequestParam(name = "quizid") String quizId) {
-        System.out.println(chosenAnswers);
-        System.out.println("quizid = " + quizId);
-        //return "redirect:/generate-quiz";
-        return new RedirectView("/");
-    }
-
-
 
 }

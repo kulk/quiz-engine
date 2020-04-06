@@ -1,22 +1,24 @@
 package com.quiz.controller;
 
-import com.quiz.model.Quiz;
+import com.quiz.service.QuizService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ResultController {
 
-/*
-    //@CrossOrigin
+    @Autowired
+    private QuizService quizService;
+
+    @CrossOrigin
     @PostMapping("/result")
-    //public @ResponseBody Quiz getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers) {
-    public String getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswers,
+    public String getQuizHandler(@RequestParam(name = "chosenanswers") String chosenAnswersString,
                                  @RequestParam(name = "quizid") String quizId) {
-        System.out.println(chosenAnswers);
-        System.out.println("quizid = " + quizId);
+        quizService.checkQuizResult(chosenAnswersString, quizId);
         return "generate-quiz";
     }
-*/
 
 }

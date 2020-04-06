@@ -1,5 +1,6 @@
 package com.quiz.service;
 
+import com.google.gson.Gson;
 import com.quiz.DAO.QuizDao;
 import com.quiz.model.Answer;
 import com.quiz.model.Question;
@@ -15,6 +16,8 @@ import java.util.List;
 public class QuizService {
 
     private QuizDao quizDao;
+
+    private Gson gson = new Gson();
 
     @Autowired
     public QuizService(QuizDao quizDao) {
@@ -45,6 +48,17 @@ public class QuizService {
         }
         quiz.setQuestions(questions);
         return quiz;
+    }
+
+    public ArrayList<String> checkQuizResult(String chosenAnswersString, String quizId){
+        // Todo: Continue here
+        System.out.println("Antwoorden" + chosenAnswersString);
+        ArrayList<ArrayList<Integer>> result = gson.fromJson(chosenAnswersString, ArrayList.class);
+        ArrayList<Integer> test = result.get(0);
+        System.out.println(test.get(0));
+
+        ArrayList<String> returnResult = new ArrayList<>(); // Why this return type?
+        return returnResult;
     }
 
 }

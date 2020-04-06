@@ -65,6 +65,10 @@ function submitAnswers(data){
     });
 }
 
+function showResult(){
+
+}
+
 function mapToJson(map) {
     return JSON.stringify([...map]);
 }
